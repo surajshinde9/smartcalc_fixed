@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Calculator - Total Interest & Repayment Schedule | SmartCalc</title>
+  <meta name="description" content="Free loan calculator. Calculate total loan cost, total interest paid, and monthly repayment schedule. See a full amortization table for any loan amount.">
+  <meta name="keywords" content="loan calculator, loan repayment calculator, total interest calculator, amortization calculator, loan cost calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://smartcalc.app/tools/loan-calculator.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../css/tools.css">
+  <style>
+    .amort-table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:16px}
+    .amort-table th{background:var(--primary-light);color:var(--primary);font-weight:700;padding:10px 12px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+    .amort-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text-mid)}
+    .amort-table tr:hover td{background:var(--surface)}
+    .amort-table-wrap{overflow-x:auto;border-radius:var(--radius-md);border:1px solid var(--border)}
+  </style>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../" class="logo"><div class="logo-icon">SC</div><span class="logo-text">Smart<span>Calc</span></span></a>
+      <nav class="nav-links"><a href="../">Home</a><a href="../#finance">Finance</a><a href="../#health">Health</a><a href="../#daily">Daily</a></nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav"><a href="../">Home</a><a href="../#finance">Finance</a><a href="../#health">Health</a><a href="../#daily">Daily</a></nav>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container"><div class="breadcrumb-inner">
+    <a href="../">Home</a><span class="breadcrumb-sep">›</span>
+    <a href="../#finance">Finance Tools</a><span class="breadcrumb-sep">›</span>
+    <span aria-current="page">Loan Calculator</span>
+  </div></div>
+</nav>
+
+<div class="tool-hero">
+  <div class="container">
+    <div class="tool-hero-badge">💰 Finance Tool</div>
+    <h1>Loan Calculator</h1>
+    <p>Calculate your total loan cost, total interest paid, monthly EMI, and see the complete amortization schedule for any loan.</p>
+  </div>
+</div>
+
+<main class="tool-main" id="main-content">
+  <div class="container">
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="calc-card">
+      <div class="calc-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Loan Repayment Calculator
+      </div>
+      <form id="loanForm" novalidate>
+        <div class="form-group">
+          <label for="loanAmt">Loan Amount (₹)</label>
+          <div class="input-wrap has-prefix">
+            <span class="input-prefix">₹</span>
+            <input type="number" id="loanAmt" placeholder="1000000" min="1000" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="loanRate">Annual Interest Rate (%)</label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="loanRate" placeholder="9" min="0.1" max="50" step="0.1" required>
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="loanYears">Loan Tenure (Years)</label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="loanYears" placeholder="10" min="1" max="30" required>
+              <span class="input-suffix">yr</span>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Calculate Loan</button>
+        <button type="button" class="btn-reset" id="resetBtn">Reset</button>
+      </form>
+    </div>
+
+    <div class="result-card" id="loanResult" aria-live="polite">
+      <div class="result-label">Monthly EMI</div>
+      <div class="result-value" id="resEmi">—</div>
+      <div class="result-sub">Your fixed monthly payment</div>
+      <div class="result-grid">
+        <div class="result-item"><div class="result-item-label">Principal</div><div class="result-item-value" id="resPrincipal">—</div></div>
+        <div class="result-item"><div class="result-item-label">Total Interest</div><div class="result-item-value" id="resInterest">—</div></div>
+        <div class="result-item"><div class="result-item-label">Total Payment</div><div class="result-item-value" id="resTotal">—</div></div>
+      </div>
+      <div style="margin-top:20px;background:rgba(255,255,255,0.1);border-radius:8px;padding:16px">
+        <div style="font-size:12px;opacity:.7;margin-bottom:8px;text-align:left">Payment Breakdown</div>
+        <div style="display:flex;height:12px;border-radius:6px;overflow:hidden;margin-bottom:8px">
+          <div id="loanPrinBar" style="background:rgba(255,255,255,0.9);transition:.5s;height:100%"></div>
+          <div id="loanIntBar" style="background:rgba(249,115,22,0.8);transition:.5s;height:100%"></div>
+        </div>
+        <div style="display:flex;gap:16px;font-size:12px;justify-content:center">
+          <span>● Principal <span id="loanPrinPct"></span></span>
+          <span style="opacity:.7">● Interest <span id="loanIntPct"></span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Amortization Table -->
+    <div class="calc-card" id="amorSection" style="display:none;margin-top:0">
+      <h2 style="font-family:var(--font-display);font-size:20px;margin-bottom:16px">Amortization Schedule (First 12 Months)</h2>
+      <div class="amort-table-wrap">
+        <table class="amort-table">
+          <thead><tr><th>#</th><th>EMI</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
+          <tbody id="amorBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="content-sections">
+      <div class="content-card">
+        <h2>Understanding Loan Repayment</h2>
+        <p>When you take a loan, you agree to repay the principal amount plus interest over a defined period. Most loans use an amortization schedule — each monthly payment covers both interest for that period and a portion of the principal. Early in the loan, most of your payment goes toward interest; later, more goes toward reducing the principal.</p>
+        <p>The total cost of your loan depends on three key factors: the principal amount (more borrowed = more interest), the interest rate (higher rate = more expensive), and the tenure (longer tenure = lower EMI but much higher total interest). Understanding this relationship helps you make informed borrowing decisions.</p>
+        <p>Using this loan calculator before applying for any loan gives you a complete picture of what you're committing to — total outgo, interest burden, and monthly impact on your budget.</p>
+        <div class="formula-box">EMI = P × r × (1+r)ⁿ / [(1+r)ⁿ - 1]</div>
+        <p>P = Principal | r = Monthly interest rate | n = Total months</p>
+      </div>
+
+      <div class="content-card">
+        <h2>How to Use the Loan Calculator</h2>
+        <div class="steps-list">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text">Enter the <strong>Loan Amount</strong> — the total amount you want to borrow.</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text">Enter the <strong>Annual Interest Rate</strong> quoted by your lender (e.g., 9% for a home loan).</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text">Enter the <strong>Loan Tenure</strong> in years — how long you wish to repay.</div></div>
+          <div class="step-item"><div class="step-num">4</div><div class="step-text">Click <strong>Calculate Loan</strong> to see EMI, total interest, total payment, and the full amortization schedule.</div></div>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Example Loan Calculation</h2>
+        <div class="example-box">
+          <p><strong>Home Loan:</strong> ₹50 Lakhs at 8.75% for 20 years</p>
+          <p>Monthly rate = 8.75 / 12 / 100 = 0.007292 | Months = 240</p>
+          <p><strong>Monthly EMI = ₹44,041</strong></p>
+          <p>Total paid = ₹1,05,69,840 | Total interest = <strong>₹55,69,840</strong></p>
+          <p>Interest forms 53% of total payment — highlighting why shorter tenures save money.</p>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">What is an amortization schedule? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">An amortization schedule is a complete table of periodic loan payments showing the amount of principal and interest that comprise each payment until the loan is paid off at the end of its term. Our calculator shows the first 12 months of your schedule.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">How does prepayment affect my loan? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">Prepaying your loan reduces the outstanding principal, which in turn reduces the interest charged in subsequent months. Even small annual prepayments can significantly reduce total interest paid and shorten the loan tenure. Check if your lender charges prepayment penalties.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">What is the difference between fixed and floating rate loans? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">A fixed rate loan has the same interest rate throughout the tenure — EMI stays constant. A floating rate loan has an interest rate that changes with market conditions (like RBI repo rate changes). Floating rates are often lower initially but carry the risk of EMI increases.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Should I choose a shorter or longer loan tenure? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">Shorter tenure = higher EMI but much less total interest. Longer tenure = lower EMI but more interest paid overall. Choose the shortest tenure your monthly budget can comfortably accommodate. As a rule, keep your total EMI obligations below 40% of your monthly income.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Related Calculators</h2>
+        <div class="related-grid">
+          <a href="emi-calculator.html" class="related-card"><div class="related-icon">🏦</div><div class="related-text">EMI Calculator</div></a>
+          <a href="sip-calculator.html" class="related-card"><div class="related-icon">📈</div><div class="related-text">SIP Calculator</div></a>
+          <a href="gst-calculator.html" class="related-card"><div class="related-icon">🧾</div><div class="related-text">GST Calculator</div></a>
+          <a href="percentage-calculator.html" class="related-card"><div class="related-icon">%</div><div class="related-text">Percentage Calc</div></a>
+        </div>
+      </div>
+    </div>
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-simple">
+      <p>© 2025 SmartCalc. Free online calculators.</p>
+      <div class="footer-simple-links"><a href="../">Home</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+<script>
+// Show amortization table after result
+document.addEventListener('DOMContentLoaded', function(){
+  var origCalc = window.loanCalcDone;
+  var obs = new MutationObserver(function(muts){
+    muts.forEach(function(m){
+      if(m.target.classList.contains('show')){
+        document.getElementById('amorSection').style.display='block';
+      }
+    });
+  });
+  var res = document.getElementById('loanResult');
+  if(res) obs.observe(res, {attributes:true, attributeFilter:['class']});
+});
+</script>
+<script src="../js/loan.js" defer></script>
+</body>
+</html>

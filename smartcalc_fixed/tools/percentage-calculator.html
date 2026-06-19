@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Percentage Calculator - Calculate Percentages Online | SmartCalc</title>
+  <meta name="description" content="Free percentage calculator. Find X% of Y, what percent X is of Y, percentage change, and add/subtract percentages. Fast and accurate online tool.">
+  <meta name="keywords" content="percentage calculator, percent calculator, percent of a number, percentage change calculator, percent increase decrease">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://smartcalc.app/tools/percentage-calculator.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../css/tools.css">
+  <style>
+    .tab-bar{display:flex;gap:4px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:4px;margin-bottom:24px;flex-wrap:wrap}
+    .tab-btn{flex:1;min-width:120px;padding:9px 12px;border-radius:var(--radius-sm);font-size:13px;font-weight:600;color:var(--text-mid);background:none;border:none;cursor:pointer;transition:background var(--transition),color var(--transition);text-align:center}
+    .tab-btn.active,.tab-btn[aria-selected=true]{background:var(--primary);color:white;box-shadow:var(--shadow-sm)}
+    .tab-panel{display:block}
+    .percent-result{background:var(--primary-light);border:1px solid #bdd0f5;border-radius:var(--radius-md);padding:16px 20px;font-size:18px;font-weight:600;color:var(--primary);margin-top:16px;display:none}
+    .percent-result.show{display:block}
+  </style>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../" class="logo"><div class="logo-icon">SC</div><span class="logo-text">Smart<span>Calc</span></span></a>
+      <nav class="nav-links"><a href="../">Home</a><a href="../#finance">Finance</a><a href="../#health">Health</a><a href="../#daily">Daily</a></nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav"><a href="../">Home</a><a href="../#finance">Finance</a><a href="../#health">Health</a><a href="../#daily">Daily</a></nav>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container"><div class="breadcrumb-inner">
+    <a href="../">Home</a><span class="breadcrumb-sep">›</span>
+    <a href="../#finance">Finance Tools</a><span class="breadcrumb-sep">›</span>
+    <span aria-current="page">Percentage Calculator</span>
+  </div></div>
+</nav>
+
+<div class="tool-hero">
+  <div class="container">
+    <div class="tool-hero-badge">% Finance Tool</div>
+    <h1>Percentage Calculator</h1>
+    <p>Calculate percentages in four different ways — find a percentage of a number, determine what percent one value is of another, compute percentage change, or add/subtract percentages.</p>
+  </div>
+</div>
+
+<main class="tool-main" id="main-content">
+  <div class="container">
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="calc-card">
+      <div class="calc-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="9" r="2"/><circle cx="15" cy="15" r="2"/><line x1="4" y1="20" x2="20" y2="4"/></svg>
+        Percentage Calculator
+      </div>
+
+      <div class="tab-bar" role="tablist" aria-label="Calculation types">
+        <button class="tab-btn active" role="tab" aria-selected="true" data-tab="tab1">X% of Y</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab2">X is ?% of Y</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab3">% Change</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab4">Add/Subtract %</button>
+      </div>
+
+      <!-- Tab 1 -->
+      <div id="tab1" class="tab-panel" role="tabpanel">
+        <p style="font-size:14px;color:var(--text-light);margin-bottom:16px">Find what X percent of Y equals</p>
+        <form id="form1" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="p1x">Percentage (X)</label>
+              <div class="input-wrap has-suffix"><input type="number" id="p1x" placeholder="25" step="any"><span class="input-suffix">%</span></div>
+            </div>
+            <div class="form-group">
+              <label for="p1y">Of Number (Y)</label>
+              <input type="number" id="p1y" placeholder="200" step="any">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+        <div class="percent-result" id="result1" aria-live="polite"></div>
+      </div>
+
+      <!-- Tab 2 -->
+      <div id="tab2" class="tab-panel" role="tabpanel" hidden>
+        <p style="font-size:14px;color:var(--text-light);margin-bottom:16px">Find what percentage X is of Y</p>
+        <form id="form2" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="p2x">Number (X)</label>
+              <input type="number" id="p2x" placeholder="50" step="any">
+            </div>
+            <div class="form-group">
+              <label for="p2y">Of Number (Y)</label>
+              <input type="number" id="p2y" placeholder="200" step="any">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+        <div class="percent-result" id="result2" aria-live="polite"></div>
+      </div>
+
+      <!-- Tab 3 -->
+      <div id="tab3" class="tab-panel" role="tabpanel" hidden>
+        <p style="font-size:14px;color:var(--text-light);margin-bottom:16px">Calculate percentage increase or decrease</p>
+        <form id="form3" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="p3from">From Value</label>
+              <input type="number" id="p3from" placeholder="100" step="any">
+            </div>
+            <div class="form-group">
+              <label for="p3to">To Value</label>
+              <input type="number" id="p3to" placeholder="125" step="any">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Calculate Change</button>
+        </form>
+        <div class="percent-result" id="result3" aria-live="polite"></div>
+      </div>
+
+      <!-- Tab 4 -->
+      <div id="tab4" class="tab-panel" role="tabpanel" hidden>
+        <p style="font-size:14px;color:var(--text-light);margin-bottom:16px">Add or subtract a percentage from a number</p>
+        <form id="form4" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="p4base">Base Number</label>
+              <input type="number" id="p4base" placeholder="1000" step="any">
+            </div>
+            <div class="form-group">
+              <label for="p4pct">Percentage</label>
+              <div class="input-wrap has-suffix"><input type="number" id="p4pct" placeholder="15" step="any"><span class="input-suffix">%</span></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="radio-toggle" role="group">
+              <input type="radio" name="p4op" id="p4add" value="add" checked>
+              <label for="p4add">Add %</label>
+              <input type="radio" name="p4op" id="p4sub" value="sub">
+              <label for="p4sub">Subtract %</label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+        <div class="percent-result" id="result4" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="content-sections">
+      <div class="content-card">
+        <h2>Understanding Percentage Calculations</h2>
+        <p>Percentages are one of the most universally useful mathematical concepts — from calculating discounts and tax to understanding growth rates and exam scores. A percentage is simply a fraction out of 100, denoted by the % symbol.</p>
+        <p>The four calculation modes in this tool cover the most common percentage problems you'll encounter in everyday life. Whether you're calculating how much you'll save in a sale, figuring out what score you got on a test, tracking business growth, or computing GST, percentages are at the heart of it all.</p>
+        <h3>Core Percentage Formulas</h3>
+        <div class="formula-box">X% of Y = (X / 100) × Y</div>
+        <div class="formula-box">X is ?% of Y = (X / Y) × 100</div>
+        <div class="formula-box">% Change = ((New - Old) / |Old|) × 100</div>
+      </div>
+
+      <div class="content-card">
+        <h2>Example Calculations</h2>
+        <div class="example-box">
+          <p><strong>1. Find 15% of 2,400:</strong> 15/100 × 2,400 = <strong>360</strong></p>
+          <p><strong>2. 360 is what % of 2,400?</strong> 360/2,400 × 100 = <strong>15%</strong></p>
+          <p><strong>3. Percentage change from 80 to 100:</strong> (100–80)/80 × 100 = <strong>+25%</strong></p>
+          <p><strong>4. Add 18% to ₹500:</strong> 500 + 18% = 500 + 90 = <strong>₹590</strong></p>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">How do I calculate percentage increase? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">Percentage increase = ((New Value - Old Value) / Old Value) × 100. For example, if a price goes from ₹100 to ₹120, the increase = ((120-100)/100) × 100 = 20%. Use the "% Change" tab in this calculator.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">How do I find what percent one number is of another? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">Use the formula: (Part / Whole) × 100. For example, 45 out of 60 marks = (45/60) × 100 = 75%. Use the "X is ?% of Y" tab above.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">What is the difference between percentage change and percentage points? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">Percentage change is relative: going from 10% to 12% is a 20% increase (2/10 × 100). Percentage points is absolute: the same change is 2 percentage points. These terms are often confused in news and reports. This calculator measures percentage change.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">How do I reverse a percentage? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">If you know the final value after a percentage was added, divide by (1 + percentage/100) to get the original. E.g., if ₹118 includes 18% GST, original = 118 / 1.18 = ₹100. Our GST calculator automates this for tax calculations.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Related Calculators</h2>
+        <div class="related-grid">
+          <a href="discount-calculator.html" class="related-card"><div class="related-icon">🏷️</div><div class="related-text">Discount Calc</div></a>
+          <a href="gst-calculator.html" class="related-card"><div class="related-icon">🧾</div><div class="related-text">GST Calculator</div></a>
+          <a href="emi-calculator.html" class="related-card"><div class="related-icon">🏦</div><div class="related-text">EMI Calculator</div></a>
+          <a href="sip-calculator.html" class="related-card"><div class="related-icon">📈</div><div class="related-text">SIP Calculator</div></a>
+        </div>
+      </div>
+    </div>
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-simple">
+      <p>© 2025 SmartCalc. Free online calculators.</p>
+      <div class="footer-simple-links"><a href="../">Home</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+<script src="../js/percentage.js" defer></script>
+</body>
+</html>

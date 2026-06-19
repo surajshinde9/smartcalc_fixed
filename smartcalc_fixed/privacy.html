@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | SmartCalc</title>
+  <meta name="description" content="SmartCalc Privacy Policy – learn how we collect, use, and protect your data.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://smartcalc.app/privacy.html">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .policy-wrap { max-width: 800px; margin: 40px auto; padding: 0 20px 60px; }
+    .policy-wrap h1 { font-size: 2rem; margin-bottom: 8px; }
+    .policy-wrap h2 { font-size: 1.2rem; margin: 32px 0 10px; color: var(--primary); }
+    .policy-wrap p, .policy-wrap li { line-height: 1.8; color: var(--text-light); margin-bottom: 12px; }
+    .policy-wrap ul { padding-left: 20px; }
+    .last-updated { font-size: 13px; color: var(--text-light); margin-bottom: 30px; }
+  </style>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="SmartCalc Home">
+        <div class="logo-icon" aria-hidden="true">SC</div>
+        <span class="logo-text">Smart<span>Calc</span></span>
+      </a>
+      <nav class="nav-links" role="navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/#finance">Finance</a>
+        <a href="/#health">Health</a>
+        <a href="/#daily">Daily Tools</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" id="menuToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="/">Home</a><a href="/#finance">Finance</a><a href="/#health">Health</a><a href="/#daily">Daily</a>
+  </nav>
+</header>
+
+<main id="main-content">
+  <div class="policy-wrap">
+    <h1>Privacy Policy</h1>
+    <p class="last-updated">Last updated: April 3, 2025</p>
+
+    <p>SmartCalc ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we handle information when you use our website at <a href="https://smartcalc.app">smartcalc.app</a>.</p>
+
+    <h2>1. Information We Collect</h2>
+    <p>SmartCalc is a free, client-side calculator tool. All calculations are performed entirely in your browser. We do not collect, store, or transmit any personal data you enter into our calculators.</p>
+    <p>We may automatically receive standard server log information such as your IP address, browser type, and pages visited. This data is used in aggregate form only to understand site usage.</p>
+
+    <h2>2. Cookies and Advertising</h2>
+    <p>We use Google AdSense to display advertisements on our site. Google AdSense may use cookies and web beacons to serve ads based on your prior visits to our website or other websites. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</p>
+    <p>We also use Google Analytics to understand how visitors use our site. Google Analytics uses cookies to collect anonymous usage data. You can opt out using the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</p>
+
+    <h2>3. Third-Party Links</h2>
+    <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of those sites. We encourage you to read the privacy policy of any site you visit.</p>
+
+    <h2>4. Children's Privacy</h2>
+    <p>SmartCalc does not knowingly collect any personal information from children under the age of 13. If you believe a child has provided us with personal information, please contact us and we will delete it promptly.</p>
+
+    <h2>5. Data Security</h2>
+    <p>We take reasonable measures to protect the security of our site. However, no internet transmission is completely secure, and we cannot guarantee the absolute security of information transmitted to or from our site.</p>
+
+    <h2>6. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will notify you of any significant changes by posting the new policy on this page with an updated date.</p>
+
+    <h2>7. Contact Us</h2>
+    <p>If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:hello@smartcalc.app">hello@smartcalc.app</a></p>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-simple">
+      <p>© 2025 SmartCalc. All rights reserved.</p>
+      <div class="footer-simple-links">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mobileNav');
+  toggle.addEventListener('click', function(){
+    const open = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', open);
+  });
+})();
+</script>
+</body>
+</html>

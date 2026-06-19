@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discount Calculator - Find Sale Price & Savings | SmartCalc</title>
+  <meta name="description" content="Free discount calculator. Calculate final price after discount, savings amount, or find original price from sale price. Quick and accurate online discount tool.">
+  <meta name="keywords" content="discount calculator, sale price calculator, percent off calculator, price after discount, savings calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://smartcalc.app/tools/discount-calculator.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../css/tools.css">
+  <style>
+    .mode-tabs{display:flex;gap:4px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:4px;margin-bottom:20px}
+    .mode-btn{flex:1;padding:9px 8px;border-radius:var(--radius-sm);font-size:13px;font-weight:600;color:var(--text-mid);background:none;border:none;cursor:pointer;transition:background var(--transition),color var(--transition);text-align:center}
+    .mode-btn.active{background:var(--primary);color:white}
+  </style>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../" class="logo"><div class="logo-icon">SC</div><span class="logo-text">Smart<span>Calc</span></span></a>
+      <nav class="nav-links"><a href="../">Home</a><a href="../#finance">Finance</a><a href="../#health">Health</a><a href="../#daily">Daily</a></nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav"><a href="../">Home</a><a href="../#finance">Finance</a><a href="../#health">Health</a><a href="../#daily">Daily</a></nav>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container"><div class="breadcrumb-inner">
+    <a href="../">Home</a><span class="breadcrumb-sep">›</span>
+    <a href="../#finance">Finance Tools</a><span class="breadcrumb-sep">›</span>
+    <span aria-current="page">Discount Calculator</span>
+  </div></div>
+</nav>
+
+<div class="tool-hero">
+  <div class="container">
+    <div class="tool-hero-badge">🏷️ Finance Tool</div>
+    <h1>Discount Calculator</h1>
+    <p>Instantly calculate the sale price after a discount, your total savings, or the original price from a discounted price.</p>
+  </div>
+</div>
+
+<main class="tool-main" id="main-content">
+  <div class="container">
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="calc-card">
+      <div class="calc-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        Discount Calculator
+      </div>
+
+      <form id="discountForm" novalidate>
+        <div class="form-group">
+          <label>Calculation Mode</label>
+          <div class="radio-toggle" role="group">
+            <input type="radio" name="mode" id="modePct" value="pct" checked>
+            <label for="modePct">% Off</label>
+            <input type="radio" name="mode" id="modeAmt" value="amt">
+            <label for="modeAmt">Amount Off</label>
+            <input type="radio" name="mode" id="modeSale" value="sale">
+            <label for="modeSale">Find Original</label>
+          </div>
+        </div>
+
+        <!-- Mode: Percentage off -->
+        <div id="mode-pct" class="mode-panel">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="origPrice">Original Price (₹)</label>
+              <div class="input-wrap has-prefix"><span class="input-prefix">₹</span><input type="number" id="origPrice" placeholder="1500" min="0" step="0.01"></div>
+            </div>
+            <div class="form-group">
+              <label for="discPct">Discount (%)</label>
+              <div class="input-wrap has-suffix"><input type="number" id="discPct" placeholder="20" min="0" max="100" step="0.1"><span class="input-suffix">%</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mode: Amount off -->
+        <div id="mode-amt" class="mode-panel" style="display:none">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="origPrice2">Original Price (₹)</label>
+              <div class="input-wrap has-prefix"><span class="input-prefix">₹</span><input type="number" id="origPrice2" placeholder="1500" min="0" step="0.01"></div>
+            </div>
+            <div class="form-group">
+              <label for="discAmt">Discount Amount (₹)</label>
+              <div class="input-wrap has-prefix"><span class="input-prefix">₹</span><input type="number" id="discAmt" placeholder="300" min="0" step="0.01"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mode: Find original -->
+        <div id="mode-sale" class="mode-panel" style="display:none">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="origPrice3">Original Price (₹)</label>
+              <div class="input-wrap has-prefix"><span class="input-prefix">₹</span><input type="number" id="origPrice3" placeholder="1500" min="0" step="0.01"></div>
+            </div>
+            <div class="form-group">
+              <label for="salePrice">Sale / Final Price (₹)</label>
+              <div class="input-wrap has-prefix"><span class="input-prefix">₹</span><input type="number" id="salePrice" placeholder="1200" min="0" step="0.01"></div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Calculate Discount</button>
+        <button type="button" class="btn-reset" id="resetBtn">Reset</button>
+      </form>
+    </div>
+
+    <div class="result-card" id="discountResult" aria-live="polite">
+      <div class="result-label">You Save</div>
+      <div class="result-value" id="resSavings">—</div>
+      <div class="result-sub">That's <span id="resDiscount">—</span> off the original price</div>
+      <div class="result-grid" style="margin-top:20px">
+        <div class="result-item"><div class="result-item-label">Original Price</div><div class="result-item-value" id="resOriginal">—</div></div>
+        <div class="result-item"><div class="result-item-label">Final Price</div><div class="result-item-value" id="resFinal">—</div></div>
+      </div>
+    </div>
+
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="content-sections">
+      <div class="content-card">
+        <h2>How Discounts Work</h2>
+        <p>A discount is a reduction in the original price of a product or service. Discounts are expressed either as a percentage off the original price (e.g., 20% off) or as a fixed amount off (e.g., ₹200 off). Understanding how to quickly calculate the final price after a discount helps you make smarter purchasing decisions and avoid being misled by marketing.</p>
+        <p>Our discount calculator supports three common scenarios: calculating the final price when you know the original price and discount percentage, finding the discount percentage when you know both the original and sale price, and finding how much you save with a fixed discount amount.</p>
+        <h3>Discount Formulas</h3>
+        <div class="formula-box">Final Price = Original Price × (1 - Discount% / 100)</div>
+        <div class="formula-box">Savings = Original Price × Discount% / 100</div>
+        <div class="formula-box">Discount% = (Savings / Original Price) × 100</div>
+      </div>
+
+      <div class="content-card">
+        <h2>How to Use the Discount Calculator</h2>
+        <div class="steps-list">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text">Choose your <strong>Calculation Mode</strong>: % Off (discount as percentage), Amount Off (fixed discount), or Find Original (when you know sale price).</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text">Enter the <strong>Original Price</strong> of the item before discount.</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text">Enter either the <strong>Discount Percentage</strong> or <strong>Discount Amount</strong> depending on your mode.</div></div>
+          <div class="step-item"><div class="step-num">4</div><div class="step-text">Click <strong>Calculate Discount</strong> to see your savings and final price.</div></div>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Example Discount Calculations</h2>
+        <div class="example-box">
+          <p><strong>Example 1 — 30% off ₹2,499:</strong></p>
+          <p>Savings = 2499 × 30/100 = ₹749.70 | Final Price = <strong>₹1,749.30</strong></p>
+          <p><strong>Example 2 — ₹500 flat off ₹3,000:</strong></p>
+          <p>Discount% = 500/3000 × 100 = 16.7% | Final Price = <strong>₹2,500</strong></p>
+          <p><strong>Example 3 — Original price if sale price is ₹1,800 after 10% off:</strong></p>
+          <p>Original = 1800 / (1 - 0.10) = <strong>₹2,000</strong></p>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">How do I calculate 20% off a price? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">Multiply the original price by 0.20 to find 20% of it (the savings), then subtract from the original. Formula: Final = Original × (1 - 0.20) = Original × 0.80. For example, 20% off ₹1,000 = ₹1,000 × 0.80 = ₹800.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">How do I find the original price from a discounted price? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">Divide the sale price by (1 - discount%/100). For example, if a product costs ₹850 after a 15% discount: Original = 850 / (1 - 0.15) = 850 / 0.85 = ₹1,000. Use the "Find Original" mode in this calculator.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">What is a stacked discount? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">A stacked discount is when two or more discounts are applied sequentially. For example, 20% off followed by an additional 10% off is NOT 30% off — it's 20% off the original, then 10% off the already-discounted price, equaling 28% total off.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">How is discount different from cashback? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">A discount reduces the price upfront — you pay less at the time of purchase. Cashback returns money to you after the purchase (to your wallet, bank, or credit card). Both reduce effective cost, but cashback requires you to pay the full price first.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Related Calculators</h2>
+        <div class="related-grid">
+          <a href="percentage-calculator.html" class="related-card"><div class="related-icon">%</div><div class="related-text">Percentage Calc</div></a>
+          <a href="gst-calculator.html" class="related-card"><div class="related-icon">🧾</div><div class="related-text">GST Calculator</div></a>
+          <a href="emi-calculator.html" class="related-card"><div class="related-icon">🏦</div><div class="related-text">EMI Calculator</div></a>
+          <a href="loan-calculator.html" class="related-card"><div class="related-icon">💰</div><div class="related-text">Loan Calculator</div></a>
+        </div>
+      </div>
+    </div>
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-simple">
+      <p>© 2025 SmartCalc. Free online calculators.</p>
+      <div class="footer-simple-links"><a href="../">Home</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+<script src="../js/discount.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About SmartCalc | Free Online Calculators</title>
+  <meta name="description" content="Learn about SmartCalc – a free collection of online calculators for finance, health, and everyday use.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://smartcalc.app/about.html">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .policy-wrap { max-width: 800px; margin: 40px auto; padding: 0 20px 60px; }
+    .policy-wrap h1 { font-size: 2rem; margin-bottom: 8px; }
+    .policy-wrap h2 { font-size: 1.2rem; margin: 32px 0 10px; color: var(--primary); }
+    .policy-wrap p, .policy-wrap li { line-height: 1.8; color: var(--text-light); margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="SmartCalc Home">
+        <div class="logo-icon" aria-hidden="true">SC</div>
+        <span class="logo-text">Smart<span>Calc</span></span>
+      </a>
+      <nav class="nav-links" role="navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/#finance">Finance</a>
+        <a href="/#health">Health</a>
+        <a href="/#daily">Daily Tools</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" id="menuToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="/">Home</a><a href="/#finance">Finance</a><a href="/#health">Health</a><a href="/#daily">Daily</a>
+  </nav>
+</header>
+
+<main id="main-content">
+  <div class="policy-wrap">
+    <h1>About SmartCalc</h1>
+
+    <p>SmartCalc is a free, ad-supported collection of online calculators designed to help you make smarter financial and everyday decisions — quickly and accurately.</p>
+
+    <h2>Our Mission</h2>
+    <p>We believe everyone deserves access to reliable, easy-to-use tools for financial planning and daily calculations — without needing to download an app, create an account, or pay anything. SmartCalc is built to be fast, mobile-friendly, and always free.</p>
+
+    <h2>What We Offer</h2>
+    <p>SmartCalc currently offers 9 free calculators covering finance, health, and daily use:</p>
+    <ul>
+      <li>EMI Calculator – Plan your loan repayments</li>
+      <li>SIP Calculator – Estimate mutual fund investment returns</li>
+      <li>Loan Calculator – Calculate total loan cost and repayment</li>
+      <li>GST Calculator – Add or remove GST from any amount</li>
+      <li>Percentage Calculator – Quick percent calculations</li>
+      <li>Discount Calculator – Find final price after sale discounts</li>
+      <li>BMI Calculator – Check your Body Mass Index</li>
+      <li>Age Calculator – Calculate exact age from date of birth</li>
+      <li>Date Calculator – Find the difference between any two dates</li>
+    </ul>
+
+    <h2>How We're Funded</h2>
+    <p>SmartCalc is free to use. To keep the site running and cover hosting costs, we display advertisements via Google AdSense. These ads are clearly labeled and do not interfere with your ability to use any calculator.</p>
+
+    <h2>Privacy & Data</h2>
+    <p>All calculations happen entirely in your browser. We do not store the numbers you enter. Please see our <a href="/privacy.html">Privacy Policy</a> for full details.</p>
+
+    <h2>Contact</h2>
+    <p>Have a suggestion for a new calculator or found a bug? We'd love to hear from you at <a href="mailto:hello@smartcalc.app">hello@smartcalc.app</a>.</p>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-simple">
+      <p>© 2025 SmartCalc. All rights reserved.</p>
+      <div class="footer-simple-links">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mobileNav');
+  toggle.addEventListener('click', function(){
+    const open = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', open);
+  });
+})();
+</script>
+</body>
+</html>

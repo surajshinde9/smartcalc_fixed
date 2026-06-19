@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date Calculator - Calculate Difference Between Dates | SmartCalc</title>
+  <meta name="description" content="Free date calculator. Find the number of days, weeks, months between two dates. Add or subtract days from a date. Includes weekday and weekend count.">
+  <meta name="keywords" content="date calculator, date difference calculator, days between dates, add days to date, how many days between two dates">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://smartcalc.app/tools/date-calculator.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../css/tools.css">
+  <style>
+    .add-result{background:var(--primary-light);border:1px solid #bdd0f5;border-radius:var(--radius-md);padding:18px 22px;margin-top:16px;display:none}
+    .add-result.show{display:block}
+    .add-result-label{font-size:13px;font-weight:600;color:var(--text-light);margin-bottom:6px}
+    .add-result-date{font-family:var(--font-display);font-size:22px;color:var(--primary);font-style:italic}
+  </style>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../" class="logo"><div class="logo-icon">SC</div><span class="logo-text">Smart<span>Calc</span></span></a>
+      <nav class="nav-links"><a href="../">Home</a><a href="../#finance">Finance</a><a href="../#health">Health</a><a href="../#daily">Daily</a></nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav"><a href="../">Home</a><a href="../#finance">Finance</a><a href="../#health">Health</a><a href="../#daily">Daily</a></nav>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container"><div class="breadcrumb-inner">
+    <a href="../">Home</a><span class="breadcrumb-sep">›</span>
+    <a href="../#daily">Daily Tools</a><span class="breadcrumb-sep">›</span>
+    <span aria-current="page">Date Calculator</span>
+  </div></div>
+</nav>
+
+<div class="tool-hero">
+  <div class="container">
+    <div class="tool-hero-badge">📅 Daily Tool</div>
+    <h1>Date Difference Calculator</h1>
+    <p>Calculate the exact number of days, weeks, and months between any two dates. Also add or subtract days from any date.</p>
+  </div>
+</div>
+
+<main class="tool-main" id="main-content">
+  <div class="container">
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Date Difference -->
+    <div class="calc-card">
+      <div class="calc-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Date Difference Calculator
+      </div>
+      <form id="dateForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date1">Start Date</label>
+            <input type="date" id="date1" required>
+          </div>
+          <div class="form-group">
+            <label for="date2">End Date</label>
+            <input type="date" id="date2" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Calculate Difference</button>
+      </form>
+    </div>
+
+    <div class="result-card" id="dateResult" aria-live="polite">
+      <div class="result-label">Date Difference</div>
+      <div class="result-value" id="resTotalDays">—</div>
+      <div class="result-sub">Total Days</div>
+      <div class="result-grid">
+        <div class="result-item"><div class="result-item-label">Weeks + Days</div><div class="result-item-value" id="resWeeks">—</div></div>
+        <div class="result-item"><div class="result-item-label">Total Months</div><div class="result-item-value" id="resMonths">—</div></div>
+        <div class="result-item"><div class="result-item-label">Years, Months, Days</div><div class="result-item-value" id="resYMD">—</div></div>
+        <div class="result-item"><div class="result-item-label">Weekdays</div><div class="result-item-value" id="resWeekdays">—</div></div>
+        <div class="result-item"><div class="result-item-label">Weekends</div><div class="result-item-value" id="resWeekends">—</div></div>
+      </div>
+    </div>
+
+    <!-- Add/Subtract Days -->
+    <div class="calc-card" style="margin-top:28px">
+      <div class="calc-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        Add / Subtract Days from a Date
+      </div>
+      <form id="addDateForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="baseDate">Base Date</label>
+            <input type="date" id="baseDate" required>
+          </div>
+          <div class="form-group">
+            <label for="daysNum">Number of Days</label>
+            <input type="number" id="daysNum" placeholder="30" min="0" max="36500">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="radio-toggle" role="group">
+            <input type="radio" name="addOp" id="opAdd" value="add" checked>
+            <label for="opAdd">Add Days</label>
+            <input type="radio" name="addOp" id="opSub" value="sub">
+            <label for="opSub">Subtract Days</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Find Date</button>
+      </form>
+      <div class="add-result" id="addDateResult" aria-live="polite">
+        <div class="add-result-label">Resulting Date</div>
+        <div class="add-result-date" id="addResDate">—</div>
+      </div>
+    </div>
+
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="content-sections">
+      <div class="content-card">
+        <h2>Why Use a Date Calculator?</h2>
+        <p>Date calculations are surprisingly tricky to do mentally because months have different lengths, leap years add extra days, and we often need to count across year boundaries. A date calculator eliminates these complexities instantly.</p>
+        <p>Common uses include calculating project timelines, finding contract expiry dates, determining age from birth dates, computing loan tenure in days, figuring out notice periods, planning events, and calculating milestones like 100-day or 1000-day anniversaries.</p>
+        <p>Our date calculator also breaks down the total days into working weekdays and weekend days — useful for project planning where you need to know how many business days are available.</p>
+      </div>
+
+      <div class="content-card">
+        <h2>How to Use the Date Calculator</h2>
+        <div class="steps-list">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text"><strong>Date Difference:</strong> Select a Start Date and End Date (order doesn't matter — the calculator handles either direction).</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text">Click <strong>Calculate Difference</strong> to see total days, weeks, months, and the exact year/month/day breakdown.</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text"><strong>Add/Subtract Days:</strong> Enter a base date and how many days to add or subtract.</div></div>
+          <div class="step-item"><div class="step-num">4</div><div class="step-text">Click <strong>Find Date</strong> to get the resulting date — perfect for deadline calculations.</div></div>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Example Date Calculations</h2>
+        <div class="example-box">
+          <p><strong>Days between India's Independence (15 Aug 1947) and today (3 Apr 2025):</strong></p>
+          <p>= 28,356 days = 4,050 weeks 6 days = 933 months</p>
+          <p><strong>Add 90 days to 1 January 2025:</strong></p>
+          <p>= 1 January + 90 days = <strong>1 April 2025</strong></p>
+          <p><strong>How long until 31 December 2025 from today?</strong></p>
+          <p>3 April 2025 → 31 December 2025 = <strong>272 days</strong></p>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Does the calculator include both start and end dates? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">The calculator counts the difference between dates — from Day 0 to Day N. If you want to include both the start and end dates in your count, add 1 to the result. For example, "from Monday to Friday" is 4 days difference, but you work 5 days (including both).</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Are leap years accounted for? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">Yes, the calculator fully accounts for leap years (366 days) and regular years (365 days) when computing the total number of days between dates.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Can I calculate working days only? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">The calculator shows you both the total weekdays (Monday–Friday) and weekends (Saturday–Sunday) count in the date range. This helps you estimate working days, though public holidays are not automatically excluded.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">What is the maximum date range supported? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">The calculator can handle any date range supported by modern browsers — typically from year 1 to year 9999. There is no practical limitation for everyday use.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Related Calculators</h2>
+        <div class="related-grid">
+          <a href="age-calculator.html" class="related-card"><div class="related-icon">🎂</div><div class="related-text">Age Calculator</div></a>
+          <a href="bmi-calculator.html" class="related-card"><div class="related-icon">⚖️</div><div class="related-text">BMI Calculator</div></a>
+          <a href="emi-calculator.html" class="related-card"><div class="related-icon">🏦</div><div class="related-text">EMI Calculator</div></a>
+          <a href="percentage-calculator.html" class="related-card"><div class="related-icon">%</div><div class="related-text">Percentage Calc</div></a>
+        </div>
+      </div>
+    </div>
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-simple">
+      <p>© 2025 SmartCalc. Free online calculators.</p>
+      <div class="footer-simple-links"><a href="../">Home</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+<script src="../js/date.js" defer></script>
+</body>
+</html>

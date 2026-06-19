@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator - Calculate Your Exact Age | SmartCalc</title>
+  <meta name="description" content="Free online age calculator. Calculate your exact age in years, months, and days from date of birth. Find out your next birthday and total days lived.">
+  <meta name="keywords" content="age calculator, calculate age from date of birth, how old am I, exact age calculator, birthday calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://smartcalc.app/tools/age-calculator.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../css/tools.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"How do I calculate my exact age?","acceptedAnswer":{"@type":"Answer","text":"Enter your date of birth and the calculator will compute your exact age in years, months, and days from today's date."}},
+      {"@type":"Question","name":"Can I calculate age as of a past date?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can set any reference date to calculate what your age was on that specific date."}}
+    ]
+  }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../" class="logo"><div class="logo-icon">SC</div><span class="logo-text">Smart<span>Calc</span></span></a>
+      <nav class="nav-links"><a href="../">Home</a><a href="../#finance">Finance</a><a href="../#health">Health</a><a href="../#daily">Daily</a></nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav"><a href="../">Home</a><a href="../#finance">Finance</a><a href="../#health">Health</a><a href="../#daily">Daily</a></nav>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container"><div class="breadcrumb-inner">
+    <a href="../">Home</a><span class="breadcrumb-sep">›</span>
+    <a href="../#health">Health Tools</a><span class="breadcrumb-sep">›</span>
+    <span aria-current="page">Age Calculator</span>
+  </div></div>
+</nav>
+
+<div class="tool-hero">
+  <div class="container">
+    <div class="tool-hero-badge">🎂 Health Tool</div>
+    <h1>Age Calculator</h1>
+    <p>Find your exact age in years, months, and days. Discover how many days you've lived and when your next birthday is.</p>
+  </div>
+</div>
+
+<main class="tool-main" id="main-content">
+  <div class="container">
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="calc-card">
+      <div class="calc-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Calculate Your Age
+      </div>
+      <form id="ageForm" novalidate>
+        <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" required aria-describedby="dob-hint">
+          <small id="dob-hint" style="font-size:12px;color:var(--text-light)">Select your birth date</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Calculate Age</button>
+        <button type="button" class="btn-reset" id="resetBtn">Reset</button>
+      </form>
+    </div>
+
+    <div class="result-card" id="ageResult" aria-live="polite">
+      <div class="result-label">Your Exact Age</div>
+      <div class="result-value"><span id="resYears">—</span> years</div>
+      <div class="result-sub"><span id="resMonths">—</span> months and <span id="resDays">—</span> days</div>
+      <div class="result-grid">
+        <div class="result-item"><div class="result-item-label">Total Days</div><div class="result-item-value" id="resTotalDays">—</div></div>
+        <div class="result-item"><div class="result-item-label">Total Weeks</div><div class="result-item-value" id="resTotalWeeks">—</div></div>
+        <div class="result-item"><div class="result-item-label">Total Months</div><div class="result-item-value" id="resTotalMonths">—</div></div>
+        <div class="result-item"><div class="result-item-label">Next Birthday</div><div class="result-item-value" id="resNextBday">—</div></div>
+      </div>
+    </div>
+
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="content-sections">
+      <div class="content-card">
+        <h2>How Age is Calculated</h2>
+        <p>Age calculation is more nuanced than simply subtracting birth year from the current year. A precise age calculation must account for whether the birthday has occurred in the current year, handle different month lengths (28–31 days), and properly manage leap years.</p>
+        <p>Our age calculator uses a day-accurate method: it calculates the difference between your date of birth and today's date, accounting for all calendar irregularities. The result shows your age in years, months, and remaining days — the most complete way to express your exact age.</p>
+        <p>Beyond years and months, knowing your total days lived is a fascinating perspective. It helps you appreciate the passage of time and can be useful for legal, medical, and administrative purposes that require precise age verification.</p>
+      </div>
+
+      <div class="content-card">
+        <h2>How to Use the Age Calculator</h2>
+        <div class="steps-list">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text">Click the date field and select your <strong>date of birth</strong> from the calendar picker.</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text">Click the <strong>Calculate Age</strong> button.</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text">View your exact age in years, months, and days, plus total days and weeks lived.</div></div>
+          <div class="step-item"><div class="step-num">4</div><div class="step-text">See how many days are left until your <strong>next birthday</strong>!</div></div>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Example Age Calculation</h2>
+        <div class="example-box">
+          <p><strong>Date of Birth:</strong> 15 March 1990</p>
+          <p><strong>Today's Date:</strong> 3 April 2025</p>
+          <p><strong>Age:</strong> 35 years, 0 months, 19 days</p>
+          <p><strong>Total days lived:</strong> 12,803 days | <strong>Total weeks:</strong> 1,829 weeks</p>
+          <p><strong>Next birthday:</strong> In 346 days (15 March 2026)</p>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">How accurate is this age calculator? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">Our age calculator is highly accurate and accounts for all calendar variations including leap years, different month lengths, and the current day. It calculates age to the exact day.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">What is the minimum age I can calculate? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">You can calculate age from birth dates as recent as today (0 days old) to any historical date. The calculator works for all ages.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Does the calculator account for leap years? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">Yes! The calculator fully accounts for leap years in the total days calculation. This is important for accurate results, especially for birthdays on February 29th.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Can I use this for legal age verification? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">While our calculator is accurate, for official legal purposes always refer to government-issued identification documents. This tool is for informational purposes only.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Related Calculators</h2>
+        <div class="related-grid">
+          <a href="bmi-calculator.html" class="related-card"><div class="related-icon">⚖️</div><div class="related-text">BMI Calculator</div></a>
+          <a href="date-calculator.html" class="related-card"><div class="related-icon">📅</div><div class="related-text">Date Calculator</div></a>
+          <a href="emi-calculator.html" class="related-card"><div class="related-icon">🏦</div><div class="related-text">EMI Calculator</div></a>
+          <a href="percentage-calculator.html" class="related-card"><div class="related-icon">%</div><div class="related-text">Percentage Calc</div></a>
+        </div>
+      </div>
+    </div>
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-simple">
+      <p>© 2025 SmartCalc. Free online calculators.</p>
+      <div class="footer-simple-links"><a href="../">Home</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+<script src="../js/age.js" defer></script>
+</body>
+</html>

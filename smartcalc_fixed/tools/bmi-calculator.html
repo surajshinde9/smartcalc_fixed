@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator - Check Your Body Mass Index | SmartCalc</title>
+  <meta name="description" content="Free BMI calculator. Calculate your Body Mass Index using height and weight. Find out if you're underweight, normal, overweight, or obese with health guidance.">
+  <meta name="keywords" content="BMI calculator, body mass index, healthy weight calculator, BMI chart, overweight calculator, obesity calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://smartcalc.app/tools/bmi-calculator.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../css/tools.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"What is a healthy BMI?","acceptedAnswer":{"@type":"Answer","text":"A BMI between 18.5 and 24.9 is considered healthy (normal weight). Below 18.5 is underweight, 25–29.9 is overweight, and 30 or above is obese."}},
+      {"@type":"Question","name":"How is BMI calculated?","acceptedAnswer":{"@type":"Answer","text":"BMI = weight (kg) / height (m)². For example, a person weighing 70 kg and 1.75 m tall has a BMI of 70 / (1.75 × 1.75) = 22.9."}}
+    ]
+  }
+  </script>
+  <style>
+    .bmi-scale{position:relative;height:20px;border-radius:10px;background:linear-gradient(90deg,#3b82f6 0%,#22c55e 30%,#f97316 60%,#ef4444 80%,#7f1d1d 100%);margin:16px 0 8px;overflow:visible}
+    .bmi-needle{position:absolute;top:-6px;width:4px;height:32px;background:white;border-radius:2px;box-shadow:0 2px 8px rgba(0,0,0,0.4);transform:translateX(-50%);transition:left .5s cubic-bezier(.4,0,.2,1)}
+    .bmi-labels{display:flex;justify-content:space-between;font-size:11px;opacity:.75;margin-bottom:4px}
+    .bmi-category-badge{display:inline-block;padding:6px 16px;border-radius:100px;font-size:14px;font-weight:700;margin-top:8px}
+  </style>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../" class="logo"><div class="logo-icon">SC</div><span class="logo-text">Smart<span>Calc</span></span></a>
+      <nav class="nav-links"><a href="../">Home</a><a href="../#finance">Finance</a><a href="../#health">Health</a><a href="../#daily">Daily</a></nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav"><a href="../">Home</a><a href="../#finance">Finance</a><a href="../#health">Health</a><a href="../#daily">Daily</a></nav>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container"><div class="breadcrumb-inner">
+    <a href="../">Home</a><span class="breadcrumb-sep">›</span>
+    <a href="../#health">Health Tools</a><span class="breadcrumb-sep">›</span>
+    <span aria-current="page">BMI Calculator</span>
+  </div></div>
+</nav>
+
+<div class="tool-hero">
+  <div class="container">
+    <div class="tool-hero-badge">⚖️ Health Tool</div>
+    <h1>BMI Calculator</h1>
+    <p>Calculate your Body Mass Index (BMI) to understand your weight category and get actionable health insights.</p>
+  </div>
+</div>
+
+<main class="tool-main" id="main-content">
+  <div class="container">
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="calc-card">
+      <div class="calc-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        Body Mass Index Calculator
+      </div>
+      <form id="bmiForm" novalidate>
+        <div class="form-group">
+          <label>Unit System</label>
+          <div class="radio-toggle" role="group" aria-label="Unit system">
+            <input type="radio" name="unit" id="unitMetric" value="metric" checked>
+            <label for="unitMetric">Metric (kg/cm)</label>
+            <input type="radio" name="unit" id="unitImperial" value="imperial">
+            <label for="unitImperial">Imperial (lb/ft)</label>
+          </div>
+        </div>
+
+        <div id="metricFields">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="weight">Weight</label>
+              <div class="input-wrap has-suffix">
+                <input type="number" id="weight" placeholder="70" min="1" max="500" step="0.1">
+                <span class="input-suffix">kg</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="height">Height</label>
+              <div class="input-wrap has-suffix">
+                <input type="number" id="height" placeholder="170" min="50" max="300" step="0.1">
+                <span class="input-suffix">cm</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="imperialFields" style="display:none">
+          <div class="form-group">
+            <label for="weightLb">Weight (pounds)</label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="weightLb" placeholder="154" min="1" max="1100" step="0.1">
+              <span class="input-suffix">lb</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="heightFt">Height (feet)</label>
+              <div class="input-wrap has-suffix">
+                <input type="number" id="heightFt" placeholder="5" min="1" max="9">
+                <span class="input-suffix">ft</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="heightIn">Height (inches)</label>
+              <div class="input-wrap has-suffix">
+                <input type="number" id="heightIn" placeholder="7" min="0" max="11">
+                <span class="input-suffix">in</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Calculate BMI</button>
+        <button type="button" class="btn-reset" id="resetBtn">Reset</button>
+      </form>
+    </div>
+
+    <div class="result-card" id="bmiResult" aria-live="polite">
+      <div class="result-label">Your BMI</div>
+      <div class="result-value" id="resBmi">—</div>
+      <div id="bmiCategoryBadge" class="bmi-category-badge" id="resCategory"></div>
+      <div style="margin-top:20px;padding:0 8px">
+        <div class="bmi-labels"><span>Underweight</span><span>Normal</span><span>Overweight</span><span>Obese</span></div>
+        <div class="bmi-scale"><div class="bmi-needle" id="bmiNeedle" style="left:0%"></div></div>
+        <div class="bmi-labels"><span>&lt;18.5</span><span>18.5</span><span>25</span><span>30+</span></div>
+      </div>
+      <div class="result-sub" id="resAdvice" style="margin-top:14px"></div>
+    </div>
+
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="content-sections">
+      <div class="content-card">
+        <h2>Understanding Your BMI</h2>
+        <p>Body Mass Index (BMI) is a widely used screening tool that estimates body fat based on height and weight. While it's not a direct measure of body fat percentage, it provides a quick and useful indicator of whether your weight is in a healthy range for your height.</p>
+        <p>BMI is calculated by dividing your weight in kilograms by the square of your height in meters. The result places you in one of four standard categories used by WHO and health professionals worldwide. However, BMI has limitations — it doesn't account for muscle mass, bone density, age, or ethnic differences.</p>
+        <h3>BMI Categories (WHO Standard)</h3>
+        <p>Underweight: Below 18.5 | Normal weight: 18.5–24.9 | Overweight: 25–29.9 | Obese Class I: 30–34.9 | Obese Class II: 35–39.9 | Obese Class III: 40 and above</p>
+        <div class="formula-box">BMI = Weight (kg) ÷ Height (m)²</div>
+      </div>
+
+      <div class="content-card">
+        <h2>How to Use the BMI Calculator</h2>
+        <div class="steps-list">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text">Choose your preferred <strong>unit system</strong> — metric (kg/cm) or imperial (lb/ft/in).</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text">Enter your <strong>weight</strong> accurately. Use a calibrated scale for best results.</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text">Enter your <strong>height</strong> without shoes for an accurate measurement.</div></div>
+          <div class="step-item"><div class="step-num">4</div><div class="step-text">Click <strong>Calculate BMI</strong> to see your BMI score, category, and health advice.</div></div>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Example BMI Calculation</h2>
+        <div class="example-box">
+          <p><strong>Person:</strong> Weight = 72 kg, Height = 175 cm (1.75 m)</p>
+          <p><strong>BMI = 72 ÷ (1.75 × 1.75) = 72 ÷ 3.0625 = 23.5</strong></p>
+          <p><strong>Category: Normal Weight ✓</strong></p>
+          <p>This person is within the healthy BMI range (18.5–24.9). Great result!</p>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">What BMI is considered healthy? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">A BMI between 18.5 and 24.9 is considered healthy/normal weight. Below 18.5 is underweight, 25–29.9 is overweight, and 30 or above is classified as obese. These are general guidelines; consult a doctor for personal assessment.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Is BMI accurate for athletes and muscular people? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">Not always. BMI doesn't distinguish between muscle and fat. A very muscular person may have a high BMI despite having low body fat. Similarly, elderly people may have a "normal" BMI with high body fat. For athletes, body fat percentage is a more accurate metric.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Does BMI differ for men and women? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">The BMI formula is the same for men and women, but women naturally have more body fat than men at the same BMI. The standard WHO categories apply to both sexes. Some researchers suggest slightly different healthy ranges for men and women.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">What should I do if my BMI is high? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">If your BMI is in the overweight or obese range, consult a healthcare professional for a comprehensive evaluation. Lifestyle changes including a balanced diet and regular physical activity are generally recommended. Do not self-diagnose based on BMI alone.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Related Calculators</h2>
+        <div class="related-grid">
+          <a href="age-calculator.html" class="related-card"><div class="related-icon">🎂</div><div class="related-text">Age Calculator</div></a>
+          <a href="date-calculator.html" class="related-card"><div class="related-icon">📅</div><div class="related-text">Date Calculator</div></a>
+          <a href="percentage-calculator.html" class="related-card"><div class="related-icon">%</div><div class="related-text">Percentage Calc</div></a>
+          <a href="emi-calculator.html" class="related-card"><div class="related-icon">🏦</div><div class="related-text">EMI Calculator</div></a>
+        </div>
+      </div>
+    </div>
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-simple">
+      <p>© 2025 SmartCalc. Free online calculators.</p>
+      <div class="footer-simple-links"><a href="../">Home</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+<script src="../js/bmi.js" defer></script>
+</body>
+</html>

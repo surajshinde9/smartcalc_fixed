@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMI Calculator - Calculate Your Loan EMI Online | SmartCalc</title>
+  <meta name="description" content="Free online EMI calculator. Calculate monthly EMI for home loan, car loan, and personal loan using principal, interest rate, and tenure. Instant results.">
+  <meta name="keywords" content="EMI calculator, loan EMI calculator, home loan EMI, car loan EMI, personal loan EMI, monthly installment calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://smartcalc.app/tools/emi-calculator.html">
+  <meta property="og:title" content="EMI Calculator - Calculate Your Loan EMI Online">
+  <meta property="og:description" content="Calculate monthly EMI for home, car, or personal loans instantly with detailed payment breakdown.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../css/tools.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"What is EMI?","acceptedAnswer":{"@type":"Answer","text":"EMI (Equated Monthly Installment) is a fixed monthly payment made to repay a loan. It includes both principal and interest components."}},
+      {"@type":"Question","name":"How is EMI calculated?","acceptedAnswer":{"@type":"Answer","text":"EMI = P × r × (1+r)^n / [(1+r)^n - 1], where P is the principal loan amount, r is the monthly interest rate, and n is the number of months."}},
+      {"@type":"Question","name":"Does a higher tenure mean lower EMI?","acceptedAnswer":{"@type":"Answer","text":"Yes, a longer tenure reduces your monthly EMI, but you end up paying more total interest over the loan period."}}
+    ]
+  }
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-inner">
+      <a href="../" class="logo" aria-label="SmartCalc Home">
+        <div class="logo-icon" aria-hidden="true">SC</div>
+        <span class="logo-text">Smart<span>Calc</span></span>
+      </a>
+      <nav class="nav-links" role="navigation" aria-label="Main navigation">
+        <a href="../">Home</a>
+        <a href="../#finance">Finance</a>
+        <a href="../#health">Health</a>
+        <a href="../#daily">Daily Tools</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav"><a href="../">Home</a><a href="../#finance">Finance</a><a href="../#health">Health</a><a href="../#daily">Daily</a></nav>
+</header>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container"><div class="breadcrumb-inner">
+    <a href="../">Home</a><span class="breadcrumb-sep">›</span>
+    <a href="../#finance">Finance Tools</a><span class="breadcrumb-sep">›</span>
+    <span aria-current="page">EMI Calculator</span>
+  </div></div>
+</nav>
+
+<div class="tool-hero">
+  <div class="container">
+    <div class="tool-hero-badge">🏦 Finance Tool</div>
+    <h1>EMI Calculator</h1>
+    <p>Calculate your monthly loan installment instantly. Enter your loan amount, interest rate, and tenure to get a detailed EMI breakdown.</p>
+  </div>
+</div>
+
+<main class="tool-main" id="main-content">
+  <div class="container">
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- CALCULATOR -->
+    <div class="calc-card">
+      <div class="calc-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        Loan EMI Calculator
+      </div>
+      <form id="emiForm" novalidate>
+        <div class="form-group">
+          <label for="principal">Loan Amount (₹)</label>
+          <div class="input-wrap has-prefix">
+            <span class="input-prefix">₹</span>
+            <input type="number" id="principal" placeholder="500000" min="1000" max="100000000" required aria-describedby="principal-hint">
+          </div>
+          <input type="range" id="principalRange" min="10000" max="10000000" step="10000" value="500000" aria-label="Loan amount slider">
+          <div class="range-labels"><span>₹10K</span><span>₹1Cr</span></div>
+          <small id="principal-hint" style="font-size:12px;color:var(--text-light)">Enter amount between ₹10,000 and ₹1 Crore</small>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="rate">Interest Rate (% per annum)</label>
+            <div class="input-wrap has-suffix">
+              <input type="number" id="rate" placeholder="8.5" min="0.1" max="50" step="0.1" required>
+              <span class="input-suffix">%</span>
+            </div>
+            <input type="range" id="rateRange" min="1" max="30" step="0.1" value="8.5" aria-label="Interest rate slider">
+            <div class="range-labels"><span>1%</span><span>30%</span></div>
+          </div>
+          <div class="form-group">
+            <label for="tenure">Loan Tenure</label>
+            <div class="input-wrap">
+              <input type="number" id="tenure" placeholder="20" min="1" max="360" required>
+            </div>
+            <input type="range" id="tenureRange" min="1" max="360" step="1" value="240" aria-label="Tenure slider">
+            <div class="range-labels"><span>1</span><span>360</span></div>
+            <div class="radio-toggle" role="group" aria-label="Tenure type" style="margin-top:8px">
+              <input type="radio" name="tenureType" id="tenYears" value="years" checked>
+              <label for="tenYears">Years</label>
+              <input type="radio" name="tenureType" id="tenMonths" value="months">
+              <label for="tenMonths">Months</label>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Calculate EMI</button>
+        <button type="button" class="btn-reset" id="resetBtn">Reset</button>
+      </form>
+    </div>
+
+    <!-- RESULT -->
+    <div class="result-card" id="emiResult" aria-live="polite">
+      <div class="result-label">Monthly EMI</div>
+      <div class="result-value" id="resEmi">—</div>
+      <div class="result-sub">Your monthly installment amount</div>
+      <div class="result-grid">
+        <div class="result-item"><div class="result-item-label">Principal</div><div class="result-item-value" id="resPrincipal">—</div></div>
+        <div class="result-item"><div class="result-item-label">Total Interest</div><div class="result-item-value" id="resTotalInterest">—</div></div>
+        <div class="result-item"><div class="result-item-label">Total Payment</div><div class="result-item-value" id="resTotalPayment">—</div></div>
+      </div>
+      <!-- Visual Breakdown -->
+      <div style="margin-top:20px;background:rgba(255,255,255,0.1);border-radius:8px;padding:16px">
+        <div style="font-size:12px;opacity:.7;margin-bottom:8px;text-align:left">Payment Breakdown</div>
+        <div style="display:flex;height:12px;border-radius:6px;overflow:hidden;margin-bottom:8px">
+          <div id="principalBar" style="background:rgba(255,255,255,0.9);transition:.5s;height:100%"></div>
+          <div id="interestBar" style="background:rgba(249,115,22,0.8);transition:.5s;height:100%"></div>
+        </div>
+        <div style="display:flex;gap:16px;font-size:12px;justify-content:center">
+          <span>● Principal <span id="principalPct"></span></span>
+          <span style="opacity:.7">● Interest <span id="interestPct"></span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- CONTENT SECTIONS -->
+    <div class="content-sections">
+      <div class="content-card">
+        <h2>What is EMI and How Does It Work?</h2>
+        <p>EMI stands for Equated Monthly Installment — a fixed amount you pay every month to repay your loan. It combines both the principal repayment and the interest component into a single convenient payment.</p>
+        <p>When you take a loan, the bank calculates your EMI based on three factors: the loan amount (principal), the rate of interest, and the loan tenure. In the early months of your loan, a larger portion of your EMI goes towards interest. As you continue paying, the principal component increases and the interest component decreases — this is called loan amortization.</p>
+        <p>Understanding your EMI helps you plan your monthly budget effectively, compare loan offers from different lenders, and choose a tenure that balances affordability with total interest cost.</p>
+        <h3>EMI Formula</h3>
+        <div class="formula-box">EMI = P × r × (1+r)ⁿ / [(1+r)ⁿ - 1]</div>
+        <p>Where P = Principal loan amount, r = Monthly interest rate (annual rate ÷ 12 ÷ 100), n = Number of monthly installments</p>
+      </div>
+
+      <div class="content-card">
+        <h2>How to Use the EMI Calculator</h2>
+        <div class="steps-list">
+          <div class="step-item"><div class="step-num">1</div><div class="step-text">Enter your <strong>Loan Amount</strong> — the total amount you wish to borrow (e.g., ₹5,00,000 for a personal loan).</div></div>
+          <div class="step-item"><div class="step-num">2</div><div class="step-text">Enter the <strong>Interest Rate</strong> per annum offered by your bank or lender (e.g., 8.5% for a home loan).</div></div>
+          <div class="step-item"><div class="step-num">3</div><div class="step-text">Set the <strong>Loan Tenure</strong> in years or months — how long you want to repay the loan.</div></div>
+          <div class="step-item"><div class="step-num">4</div><div class="step-text">Click <strong>Calculate EMI</strong> to instantly see your monthly installment, total interest, and total payment.</div></div>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Example EMI Calculation</h2>
+        <div class="example-box">
+          <p><strong>Scenario:</strong> Home loan of ₹30 Lakhs at 8.5% per annum for 20 years.</p>
+          <p>Monthly rate (r) = 8.5 / 12 / 100 = 0.007083<br>Number of months (n) = 20 × 12 = 240</p>
+          <p><strong>EMI = ₹30,00,000 × 0.007083 × (1.007083)²⁴⁰ / [(1.007083)²⁴⁰ - 1]</strong></p>
+          <p>= <strong>₹26,035 per month</strong></p>
+          <p>Total payment = ₹62,48,400 | Total interest = ₹32,48,400</p>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list" role="list">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">What is EMI? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">EMI (Equated Monthly Installment) is a fixed amount paid by a borrower to a lender each month. It covers both the interest on the loan and the partial repayment of the principal, ensuring the loan is fully paid off by the end of the tenure.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Does a longer tenure reduce EMI? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">Yes! A longer tenure reduces your monthly EMI, making it easier on your monthly budget. However, you end up paying significantly more in total interest. A shorter tenure means higher EMI but lower total cost.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Can I prepay my loan to reduce EMI? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">Yes, most lenders allow part-prepayment. When you prepay, either your EMI decreases (same tenure) or your tenure shortens (same EMI), depending on your lender's policy. Prepayment reduces the overall interest burden significantly.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">What is the difference between flat rate and reducing balance EMI? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">Flat rate interest calculates interest on the original principal throughout the tenure, resulting in a higher effective rate. Reducing balance (diminishing balance) calculates interest on the outstanding principal, which decreases with each payment. Most banks use reducing balance — this calculator uses the same method.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Is EMI the same every month? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+            <div class="faq-a">Yes, for fixed-rate loans the EMI amount stays constant throughout the tenure. The proportion of principal and interest within each EMI changes — early payments have more interest and less principal, while later payments have more principal.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RELATED TOOLS -->
+      <div class="content-card">
+        <h2>Related Calculators</h2>
+        <div class="related-grid">
+          <a href="loan-calculator.html" class="related-card"><div class="related-icon">💰</div><div class="related-text">Loan Calculator</div></a>
+          <a href="sip-calculator.html" class="related-card"><div class="related-icon">📈</div><div class="related-text">SIP Calculator</div></a>
+          <a href="gst-calculator.html" class="related-card"><div class="related-icon">🧾</div><div class="related-text">GST Calculator</div></a>
+          <a href="percentage-calculator.html" class="related-card"><div class="related-icon">%</div><div class="related-text">Percentage Calc</div></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-container" aria-label="Advertisement">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-simple">
+      <p>© 2025 SmartCalc. Free online calculators.</p>
+      <div class="footer-simple-links">
+        <a href="../">Home</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="../js/emi.js" defer></script>
+</body>
+</html>

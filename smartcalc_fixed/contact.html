@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | SmartCalc</title>
+  <meta name="description" content="Contact SmartCalc – send us your questions, feedback, or bug reports.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://smartcalc.app/contact.html">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .policy-wrap { max-width: 800px; margin: 40px auto; padding: 0 20px 60px; }
+    .policy-wrap h1 { font-size: 2rem; margin-bottom: 8px; }
+    .policy-wrap p { line-height: 1.8; color: var(--text-light); margin-bottom: 16px; }
+    .contact-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; margin-top: 24px; }
+    .contact-box a { color: var(--primary); font-weight: 600; text-decoration: none; }
+    .contact-box a:hover { text-decoration: underline; }
+    .contact-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 20px; }
+    .contact-label { font-weight: 600; color: var(--text); min-width: 80px; }
+  </style>
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/" class="logo" aria-label="SmartCalc Home">
+        <div class="logo-icon" aria-hidden="true">SC</div>
+        <span class="logo-text">Smart<span>Calc</span></span>
+      </a>
+      <nav class="nav-links" role="navigation" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/#finance">Finance</a>
+        <a href="/#health">Health</a>
+        <a href="/#daily">Daily Tools</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" id="menuToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="/">Home</a><a href="/#finance">Finance</a><a href="/#health">Health</a><a href="/#daily">Daily</a>
+  </nav>
+</header>
+
+<main id="main-content">
+  <div class="policy-wrap">
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you — whether it's a question, a suggestion for a new calculator, or a bug report.</p>
+
+    <div class="contact-box">
+      <div class="contact-item">
+        <span class="contact-label">Email:</span>
+        <span><a href="mailto:hello@smartcalc.app">hello@smartcalc.app</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Response:</span>
+        <span>We aim to respond within 2–3 business days.</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">For:</span>
+        <span>Bug reports, calculator suggestions, general feedback, advertising inquiries.</span>
+      </div>
+    </div>
+
+    <p style="margin-top:32px;font-size:14px;">Please do not send sensitive personal or financial information via email. All calculator results are computed in your browser and we do not have access to any data you entered on the site.</p>
+  </div>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-simple">
+      <p>© 2025 SmartCalc. All rights reserved.</p>
+      <div class="footer-simple-links">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mobileNav');
+  toggle.addEventListener('click', function(){
+    const open = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', open);
+  });
+})();
+</script>
+</body>
+</html>
